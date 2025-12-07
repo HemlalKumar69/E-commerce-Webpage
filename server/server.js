@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require("path");
+
 const authRouter = require("./routes/auth/auth-routes");
 const adminProductsRouter = require("./routes/admin/products-routes");
 const adminOrderRouter = require("./routes/admin/order-routes");
@@ -27,7 +29,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "https://e-commerce-webpage-n7jl.onrender.com",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
@@ -55,6 +57,9 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
+
+const clientDistPath = path.join(__dirname, "..", "client", "dist");
+app.use(express.static(clientDistPath));
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "..", "client", "dist", "index.html"));
