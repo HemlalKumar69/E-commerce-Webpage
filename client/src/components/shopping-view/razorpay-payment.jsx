@@ -2,7 +2,7 @@ import React from "react";
 
 const RazorpayPayment = () => {
     const handleRazorpayPayment = async () => {
-        const response = await fetch("http://localhost:5000/api/payment/create-order", {
+        const response = await fetch("https://e-commerce-webpage-n7jl.onrender.com/api/payment/create-order", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ amount: 500 }),
