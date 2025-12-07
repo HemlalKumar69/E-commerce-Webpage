@@ -2,8 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const path = require("path");
-
 const authRouter = require("./routes/auth/auth-routes");
 const adminProductsRouter = require("./routes/admin/products-routes");
 const adminOrderRouter = require("./routes/admin/order-routes");
@@ -20,7 +18,7 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 
 
 mongoose
-  .connect("mongodb+srv://qwert:123@cluster0.hkpeokj.mongodb.net/?appName=Cluster0")
+  .connect("MongoDB-URL")
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
@@ -44,7 +42,6 @@ app.use(
 
 app.use(cookieParser());
 app.use(express.json());
-
 app.use("/api/auth", authRouter);
 app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/admin/orders", adminOrderRouter);
@@ -58,11 +55,8 @@ app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
 
-const clientDistPath = path.join(__dirname, "..", "client", "dist");
-app.use(express.static(clientDistPath));
-
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "..", "client", "dist", "index.html"));
+app.get("/", (req, res) => {
+  res.send("Backend API is running successfully ");
 });
 
 
