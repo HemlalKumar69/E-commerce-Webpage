@@ -163,7 +163,7 @@ function ShoppingCheckout() {
               console.log("Payment success:", response);
 
               await fetch(
-                "http://localhost:5000/api/shop/order/verify-payment",
+                "https://e-commerce-webpage-n7jl.onrender.com/api/shop/order/verify-payment",
                 {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
