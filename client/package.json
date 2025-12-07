@@ -4,10 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "start": "node server.js",
+  "dev": "nodemon server.js",
+  "build": "cd ../client && npm install && npm run build"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.0",
