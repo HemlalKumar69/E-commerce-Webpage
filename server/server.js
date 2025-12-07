@@ -18,7 +18,7 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 
 
 mongoose
-  .connect("MongoDB_Url")
+  .connect("MongoDB_URL")
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
